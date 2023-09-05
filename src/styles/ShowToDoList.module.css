@@ -1,0 +1,57 @@
+.todo{
+    width: 100%;
+    min-height: 50px;
+    padding: 5px 10px;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+     
+    display: grid;
+    grid-template-columns:12fr 1fr 1fr 0.4fr ;
+    grid-auto-rows:auto;
+    align-items: center;
+    column-gap: 5px;
+    text-align:center;
+}
+
+/*todo data styles*/
+.todo-data{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content auto;
+    justify-items: flex-start;
+    row-gap: 10px;
+    word-break: break-word;
+    text-align: left;
+}
+b{
+    color: rgb(0, 0, 0);
+}
+.todo-task{
+    grid-column: 1/4;
+    grid-row: 2/2;
+    word-break: break-word;
+}
+
+/*todo buttons styles*/
+.todo-edit{
+    justify-self: flex-end;
+    font-size: 0.9rem;
+}
+.todo-delete{
+    cursor: pointer;
+    justify-self: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.edit-icon, .delete-icon{
+    width: 30px;
+    height: 30px;
+}
+.todo-checkbox{
+    cursor: pointer;
+    width:20px;
+    height:20px;
+}
+
