@@ -2,9 +2,11 @@ import {  useRef } from "react"
 import useRequest from "../hooks/useRequest";
 import {useNavigate} from "react-router-dom"
 import Style from "../styles/ToDoForm.module.css"
+import  { useLenguageContext, LenguageArr }  from "../contexts/LenguageContext"
 
 
 const ToDoForm = ({toDoNameProp, firstNameProp, lastNameProp, dueDateProp, priorityProp, directToProp, urlProp="/api/v1/todolist", methodProp="POST"}) => {
+    const {lenguage} = useLenguageContext()
     const todoRef = useRef()
     const firstNameRef = useRef()
     const lastNameRef = useRef()
@@ -43,22 +45,22 @@ const ToDoForm = ({toDoNameProp, firstNameProp, lastNameProp, dueDateProp, prior
  
     return (
         <div className={Style.wrapper}>
-            <form className={Style["add-from"]}  onSubmit={onSubmit } >
-                {methodProp==="POST"? <h1>Add To-Do Task</h1> : <h1>Change To-Do Task</h1>} 
+            <form className={Style["add-from"]}  onSubmit={onSubmit } name="todo form">
+                <h1>{methodProp==="POST"? LenguageArr[lenguage].addForm : LenguageArr[lenguage].changeForm}</h1>
                 <textarea type="text" name="to-do" ref={todoRef} placeholder="Add To-Do" defaultValue={toDoNameProp}/>
                 <input type="text" name="user-name" ref={firstNameRef} placeholder="Name" defaultValue={firstNameProp}/>
                 <input type="text" name="user-lastname" ref={lastNameRef} placeholder="Last Name" defaultValue={lastNameProp} />
                 <input type="date" name="Due-date" ref={dueDateRef}  defaultValue={dueDateProp}/>
                 <div className={Style["priority-wrapper"]} >
-                    <label htmlFor="priority">Task Priority</label>
+                    <label htmlFor="priority">{LenguageArr[lenguage].taskPriority}</label>
                     <select name="priority selector" className={Style["priority-select"]} ref={priorityRef} id="priority" defaultValue={priorityProp} >
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="H    ight">Hight</option>
+                        <option value="low">{LenguageArr[lenguage].priorityOptions.low}</option>
+                        <option value="medium">{LenguageArr[lenguage].priorityOptions.medium}</option>
+                        <option value="high">{LenguageArr[lenguage].priorityOptions.high}</option>
                     </select>
                 </div>
                 <button className={Style["add-btn"]}>
-                    {methodProp==="POST"? "Add" :"Change"}
+                    {methodProp==="POST"? LenguageArr[lenguage].addBtn : LenguageArr[lenguage].changeBtn}
                 </button>
             </form>
         </div>

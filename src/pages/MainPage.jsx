@@ -1,13 +1,13 @@
 import ShowToDoList from "../components/ShowToDoList"
 import useFecth from "../hooks/useFetch"
-import { Link } from "react-router-dom"
 import { useState } from "react"
 import Style from "../styles/MainPage.module.css"
 import Loading from "../components/Loading"
 import Error from "../components/Error"
-import Header from "../components/Header"
+import  { useLenguageContext, LenguageArr }  from "../contexts/LenguageContext"
 
 const MainPage = () => {
+    const {lenguage,changeLenguage} = useLenguageContext()
     const [wasDeleted, setWasDeleted] = useState(false)
     const {response, error, loading} = useFecth({url:"/api/v1/todolist", method:"GET", wasDeleted})
 
@@ -21,8 +21,7 @@ const MainPage = () => {
     return (
         <div className={Style.wrapper}>
             <div className={Style["todo-wrapper"]}>
-                <Header/>
-                <h1>To Do App</h1>
+                <h1>{LenguageArr[lenguage].title}</h1>
                 <div className={Style["todo-list"]}>
                 {response && response.items.map((todo)=>(
                 <ShowToDoList 
