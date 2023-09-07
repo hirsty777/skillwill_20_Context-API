@@ -8,6 +8,7 @@ export const LenguageArr = {
         date:"თარიღი:",
         priority:"პრიორიტეტი:",
         task:"დავალება:",
+        placeHolders:{taskPH:"შეიყვანე დავალება",firstNamePH:"სახელი",lastNamePH:"გვარი"},
         priorityOptions:{low:"დაბალი",medium:"საშუალო",high:"მაღალი"},
         taskPriority:"პრიორიტეტი",
         addForm:"დავალების დამატება",
@@ -28,6 +29,7 @@ export const LenguageArr = {
         date:"Due Date:",
         priority:"Priority:",
         task:"Task:",
+        placeHolders:{taskPH:"Enter To-Do",firstNamePH:"First Name",lastNamePH:"Last Name"},
         priorityOptions:{low:"Low",medium:"Medium",high:"High"},
         taskPriority:"Priority",
         addForm:"Add To-Do Task",
@@ -60,6 +62,7 @@ const LenguageContextProvider = ({children}) => {
 
 export const useLenguageContext = () => {
     const contextValue = useContext(LenguageContext)
+    if(!contextValue) throw new Error("no context provided")
 
     return contextValue
 }

@@ -47,9 +47,9 @@ const ToDoForm = ({toDoNameProp, firstNameProp, lastNameProp, dueDateProp, prior
         <div className={Style.wrapper}>
             <form className={Style["add-from"]}  onSubmit={onSubmit } name="todo form">
                 <h1>{methodProp==="POST"? LenguageArr[lenguage].addForm : LenguageArr[lenguage].changeForm}</h1>
-                <textarea type="text" name="to-do" ref={todoRef} placeholder="Add To-Do" defaultValue={toDoNameProp}/>
-                <input type="text" name="user-name" ref={firstNameRef} placeholder="Name" defaultValue={firstNameProp}/>
-                <input type="text" name="user-lastname" ref={lastNameRef} placeholder="Last Name" defaultValue={lastNameProp} />
+                <textarea type="text" name="to-do" ref={todoRef} placeholder = {LenguageArr[lenguage].placeHolders.taskPH} defaultValue={toDoNameProp} />
+                <input type="text" name="user-name" ref={firstNameRef} placeholder = {LenguageArr[lenguage].placeHolders.firstNamePH} defaultValue={firstNameProp} />
+                <input type="text" name="user-lastname" ref={lastNameRef} placeholder = {LenguageArr[lenguage].placeHolders.lastNamePH} defaultValue={lastNameProp} />
                 <input type="date" name="Due-date" ref={dueDateRef}  defaultValue={dueDateProp}/>
                 <div className={Style["priority-wrapper"]} >
                     <label htmlFor="priority">{LenguageArr[lenguage].taskPriority}</label>
